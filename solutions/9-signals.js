@@ -8,5 +8,15 @@ const freeEmailDomains = [
 ];
 
 // BEGIN
+const getFreeDomainsCount = (emails) => {
+          return emails.reduce((accum, email) => {
+              const emailDomain = email.split('@')[1];
+              if (freeEmailDomains.includes(emailDomain)) {
+                  accum[emailDomain] = (accum[emailDomain] || 0) + 1;
+              }
+              return accum;
+          }, {});
+};
 
+export default getFreeDomainsCount;
 // END
